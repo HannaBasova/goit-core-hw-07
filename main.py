@@ -1,5 +1,5 @@
 from my_classes import AddressBook
-from handlers import parse_input,add_contact,change_contact,phone_username,show_all_contacts, add_birthday, show_birthday
+from handlers import parse_input,add_contact,change_contact,phone_username,show_all_contacts, add_birthday, show_birthday,birthdays
 
 def main():
     book = AddressBook()
@@ -42,10 +42,10 @@ def main():
             print(add_birthday(args,book))
 
         elif command == "show-birthday":
-            print(show_birthday(args,book))# реалізація
+            print(show_birthday(args,book))
 
         elif command == "birthdays":
-            print(AddressBook.get_upcoming_birthdays(book))
+            print(birthdays(book))
 
         else:
             print("Invalid command.")
