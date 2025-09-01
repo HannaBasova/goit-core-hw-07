@@ -1,8 +1,8 @@
 from my_classes import AddressBook
-from handlers import parse_input,add_contact,change_contact,phone_username,show_all_contacts, add_birthday, show_birthday,birthdays
+from handlers import parse_input,add_contact,change_contact,phone_username,show_all_contacts, add_birthday, show_birthday,birthdays, save_data,load_data
 
 def main():
-    book = AddressBook()
+    book = load_data()
     print("Welcome to the assistant bot!")
     COMMANDS  = """
     1) "close" or "exit" - to exit from Bot
@@ -21,6 +21,7 @@ def main():
 
         if command in ["close", "exit"]:
             print("Good bye!")
+            save_data(book)
             break
 
         elif command == "hello":

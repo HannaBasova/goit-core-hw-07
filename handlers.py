@@ -1,5 +1,6 @@
 from datetime import timedelta
 from my_classes import Record,AddressBook
+import pickle
 
 COMMANDS = """
    1) "close" or "exit" - to exit from Bot
@@ -89,6 +90,16 @@ def birthdays(book: AddressBook):
         return "No upcoming birthdays."
     return "\n".join(f"Contact : {item['name']} -  congratulation on :  {item['birthday']}" for item in upcoming)
 
-book = AddressBook()
-print(book)
+
+def save_data(book, filename="addressbook.pkl"):
+    with open(filename, "wb") as f:
+        pickle.dump(book, f)
+
+def load_data(filename="addressbook.pkl"):
+    try:
+        with open(filename, "rb") as f:
+            return pickle.load(f)
+    except FileNotFoundError:
+        return AddressBook()
+
 
